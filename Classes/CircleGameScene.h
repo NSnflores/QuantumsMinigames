@@ -16,10 +16,7 @@ public:
     CREATE_FUNC(CircleGame);
     vector<Ball*> balls;
     virtual bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
-    
     Sprite* circle;
-    
-    
     void createBall(float dt);
 };
 

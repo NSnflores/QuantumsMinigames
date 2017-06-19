@@ -1,11 +1,3 @@
-//
-//  Ball.cpp
-//  QuantumMinigames
-//
-//  Created by Noé Flores on 6/19/17.
-//
-//
-
 #include "Ball.h"
 
 Ball::Ball(Node* scene)
@@ -25,7 +17,6 @@ Ball::Ball(Node* scene)
     runAnimation();
 }
 
-//Not implemented
 bool Ball::isCentered(float radius)
 {
     float x2 = (sprite->getPosition().x - center.x) * (sprite->getPosition().x - center.x) +
@@ -36,4 +27,13 @@ bool Ball::isCentered(float radius)
 void Ball::runAnimation()
 {
     sprite->runAction(MoveTo::create(2.f, Vec2(-sprite->getContentSize().width,sprite->getPosition().y)));
+}
+
+void Ball::removeSelf()
+{
+    FadeOut* fadeOut = FadeOut::create(0.1);
+    TintTo* tint = TintTo::create(0.05, 0, 255, 255);
+    Spawn* spawn = Spawn::create(fadeOut, tint, NULL);
+    Sequence* sequence = Sequence::create(spawn, RemoveSelf::create(true), NULL);
+    sprite->runAction(sequence);
 }

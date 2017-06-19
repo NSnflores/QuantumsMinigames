@@ -1,10 +1,3 @@
-//
-//  Ball.hpp
-//  QuantumMinigames
-//
-//  Created by Noé Flores on 6/19/17.
-//
-//
 #include "cocos2d.h"
 
 #ifndef Ball_h
@@ -18,6 +11,7 @@ public:
     Ball(Node* scene);
     Sprite* sprite;
     bool isCentered(float radius);
+    void removeSelf();
     
     Size visibleSize;
     Vec2 origin;

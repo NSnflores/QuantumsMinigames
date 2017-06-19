@@ -21,6 +21,7 @@ bool CircleGame::init()
     
     circle = Sprite::create("sprites/circle_white.png");
     circle->setPosition(center);
+    circle->setOpacity(200);
     this->addChild(circle);
     
     
@@ -32,9 +33,9 @@ bool CircleGame::init()
     RepeatForever* repeatAnimation = RepeatForever::create(sequenceAnimation);
     circle->runAction(repeatAnimation);
     
-    TintTo* toGreen = TintTo::create(0.35, 150, 255, 150);
-    TintTo* toBlue = TintTo::create(0.35, 150, 150, 255);
-    TintTo* toRed = TintTo::create(0.35, 255, 150, 150);
+    TintTo* toGreen = TintTo::create(0.35, 180, 255, 180);
+    TintTo* toBlue = TintTo::create(0.35, 180, 180, 255);
+    TintTo* toRed = TintTo::create(0.35, 255, 180, 180);
     Sequence* colorAnimation = Sequence::create(toGreen,toRed,toBlue, NULL);
     RepeatForever* repeatColor = RepeatForever::create(colorAnimation);
     circle->runAction(repeatColor);
@@ -58,7 +59,7 @@ bool CircleGame::onTouchBegan(Touch* touch, Event* event)
     for(int i = 0; i< balls.size(); i++){
         if(balls.at(i)->isCentered(circle->getContentSize().width*0.75f))
         {
-            balls.at(i)->sprite->runAction(RemoveSelf::create(true));
+            balls.at(i)->removeSelf();
             balls.erase(balls.begin()+i);
             i--;
         }
