@@ -38,6 +38,5 @@ bool MainMenu::init()
 void MainMenu::playGameCallback(Ref* pSender)
 {
     auto scene = CircleGame::createScene();
-    auto sceneTransition = TransitionFadeBL::create(0.5f, scene);
-    Director::getInstance()->replaceScene(sceneTransition);
+    Director::getInstance()->pushScene(scene);
 }
