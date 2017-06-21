@@ -10,7 +10,7 @@ class Ball
 public:
     Ball(Node* scene);
     Sprite* sprite;
-    bool isCentered(float radius);
+    bool isCentered(float radius, Vec2 centerPosition);
     void removeSelf();
     
     Size visibleSize;

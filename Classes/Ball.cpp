@@ -17,13 +17,14 @@ Ball::Ball(Node* scene)
     runAnimation();
 }
 
-bool Ball::isCentered(float radius)
+bool Ball::isCentered(float radius, Vec2 centerPosition)
 {
-    float x2 = (sprite->getPosition().x - center.x) * (sprite->getPosition().x - center.x) +
-               (sprite->getPosition().y - center.y) * (sprite->getPosition().y - center.y);
-    return radius*radius > x2;
+    float h2 = (sprite->getPosition().x - centerPosition.x) * (sprite->getPosition().x - centerPosition.x) +
+               (sprite->getPosition().y - centerPosition.y) * (sprite->getPosition().y - centerPosition.y);
+    return radius*radius > h2;
 }
 
+//Needs to implement random animations
 void Ball::runAnimation()
 {
     sprite->runAction(MoveTo::create(2.f, Vec2(-sprite->getContentSize().width,sprite->getPosition().y)));

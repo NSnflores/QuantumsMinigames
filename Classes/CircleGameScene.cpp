@@ -57,7 +57,7 @@ void CircleGame::createBall(float dt)
 bool CircleGame::onTouchBegan(Touch* touch, Event* event)
 {
     for(int i = 0; i< balls.size(); i++){
-        if(balls.at(i)->isCentered(circle->getContentSize().width*0.75f))
+        if(balls.at(i)->isCentered(circle->getContentSize().width*0.75f, circle->getPosition()))
         {
             balls.at(i)->removeSelf();
             balls.erase(balls.begin()+i);
